@@ -1,9 +1,25 @@
 <template>
     <div class="flex flex-center">
-        <q-btn type="a" href="#" round :color="active?'primary':'info'" text-color="white" :label="number">
-            <q-badge v-if="badge" color="red" class="absolute-bottom-right">{{ badge }}</q-badge>
+        <q-btn
+          type="a"
+          href="#"
+          round
+          :color="active?'primary':'info'"
+          text-color="white"
+          :label="number"
+          size="sm"
+          dense
+        >
+          <q-badge
+            v-if="badge"
+            color="red"
+            class="absolute-bottom-right q-py-none"
+            style="font-size: 0.4rem; right: -1rem; bottom: -0.5rem;"
+          >
+          {{ badge }}
+          </q-badge>
         </q-btn>
-        <div class="q-pl-sm">{{ label }}</div>
+        <div class="q-px-sm">{{ label }}</div>
     </div>
 </template>
 
