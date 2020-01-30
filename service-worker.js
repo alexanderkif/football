@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.e5aaa8afb0209d17132d98d4a94bbdc7.js"
+  "precache-manifest.9a1d52dfeb2341bbffa09d4732d7c5d6.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "football"});
