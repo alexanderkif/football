@@ -34,20 +34,20 @@
           <div class="row full-width">
             <div class="col-3 flex flex-center">
               <q-img
-                src="statics/fci.png"
+                :src="image"
                 spinner-color="white"
                 style="height: 5rem; max-width: 5rem"
               />
             </div>
             <div class="trener col-9 flex flex-center">
               <div class="text-h4 q-ma-sm relative-position" style="cursor: inherit">
-                Сергей Сергеевич Никитин
+                {{ name }}
                 <q-btn
                   outline
                   rounded
                   disable
                   color="grey-7"
-                  label="ТРЕНЕР"
+                  :label="status"
                   class="absolute-bottom-right"
                   style="cursor: inherit"
                 />
@@ -86,11 +86,41 @@
             :icon_right="card.icon_right"
           />
         </div>
-        <div class="row bg-pink-3" style="height: 6rem">
-          .col-8
+        <div class="row bg-grey-3 justify-around q-py-md flex flex-center">
+          <div>
+            <q-btn
+              type="a"
+              href="#"
+              unelevated
+              rounded
+              color="warning"
+              label="Новые игроки от другого тренера"
+              class="text-uppercase"
+            />
+          </div>
+          <div>
+            <q-btn
+              type="a"
+              href="#"
+              unelevated
+              round
+              color="primary"
+              icon="person_add"
+              style="font-size: 1.2rem"
+            />
+          </div>
         </div>
-        <div class="row bg-pink-5" style="height: 14.5rem">
-          .col-4
+        <div class="row bg-grey-3 justify-center q-pb-xl">
+          <div class="row text-uppercase">Отчет селекции</div>
+          <select-slider
+            v-for="(slider, index) in selects"
+            :key="index"
+            :text="slider.text"
+            :value="slider.text === 'Выполнил план' ? countPlan : slider.value"
+            :max="slider.text === 'Выполнил план' ? 100 : slider.max"
+            :color="slider.color"
+          >
+          </select-slider>
         </div>
       </div>
     </div>
@@ -101,19 +131,57 @@
 import RoundLabel from '../components/RoundLabel'
 import CirclScale from '../components/CirclScale'
 import StatCard from '../components/StatCard'
+import SelectSlider from '../components/SelectSlider'
 
 export default {
   name: 'PageIndex',
   components: {
     RoundLabel,
     CirclScale,
-    StatCard
+    StatCard,
+    SelectSlider
+  },
+  computed: {
+    countPlan () {
+      let procents = 0
+      for (let i = 1; i < this.selects.length; i++) {
+        procents += Math.floor(this.selects[i].value * 100 / this.selects[i].max)
+      }
+      return Math.round(procents / 3)
+    }
   },
   data () {
     return {
       search_text: '',
       reiting: 93,
       reitingBadge: 4,
+      image: 'statics/fci.png',
+      name: 'Сергей Сергеевич Никитин',
+      status: 'ТРЕНЕР',
+      selects: [
+        {
+          text: 'Выполнил план',
+          color: 'negative'
+        },
+        {
+          text: 'Прозвонил',
+          value: 17,
+          max: 35,
+          color: 'secondary'
+        },
+        {
+          text: 'Пригласил',
+          value: 14,
+          max: 20,
+          color: 'warning'
+        },
+        {
+          text: 'Пришли',
+          value: 2,
+          max: 5,
+          color: 'positive'
+        }
+      ],
       circs: [
         {
           circValue: 6,
