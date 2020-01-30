@@ -39,7 +39,7 @@
                 style="height: 5rem; max-width: 5rem"
               />
             </div>
-            <div class="col-9 flex flex-center">
+            <div class="trener col-9 flex flex-center">
               <div class="text-h4 q-ma-sm relative-position" style="cursor: inherit">
                 Сергей Сергеевич Никитин
                 <q-btn
@@ -73,8 +73,18 @@
             />
           </div>
         </div>
-        <div class="row bg-pink-5" style="height: 8.5rem">
-          .col
+        <div class="row bg-grey-3 q-py-sm justify-around">
+          <stat-card
+            class="bg-grey-3"
+            v-for="(card, index) in cards"
+            :key="index"
+            :icon="card.icon"
+            :text="card.text"
+            :btn_left="card.btn_left"
+            :btn_right="card.btn_right"
+            :icon_left="card.icon_left"
+            :icon_right="card.icon_right"
+          />
         </div>
         <div class="row bg-pink-3" style="height: 6rem">
           .col-8
@@ -90,12 +100,14 @@
 <script>
 import RoundLabel from '../components/RoundLabel'
 import CirclScale from '../components/CirclScale'
+import StatCard from '../components/StatCard'
 
 export default {
   name: 'PageIndex',
   components: {
     RoundLabel,
-    CirclScale
+    CirclScale,
+    StatCard
   },
   data () {
     return {
@@ -106,7 +118,7 @@ export default {
         {
           circValue: 6,
           circMin: 0,
-          circMax: 46,
+          circMax: 15,
           circColor: 'positive',
           fontColor: 'white',
           circTextUp: 'групп / детей',
@@ -127,8 +139,29 @@ export default {
           circTextDown: 'количество',
           circText: 'Задачи'
         }
+      ],
+      cards: [
+        {
+          icon: 'business_center',
+          text: 'Обучение',
+          btn_left: 123,
+          btn_right: 7,
+          icon_right: 'new'
+        },
+        {
+          icon: 'money',
+          text: 'Финансовый отчет'
+        },
+        {
+          icon: 'library_books',
+          text: 'Сдача отчета'
+        }
       ]
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+
+</style>
