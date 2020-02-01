@@ -10,11 +10,11 @@
     </div>
     <div
       class="row relative-position bg-grey-5"
-      style="height: 0.6rem; width: 100%; border-radius: 0.3rem"
+      style="height: 0.6rem; width: 100%"
     >
       <div
         :class="'value absolute bg-' + color"
-        :style="'height: inherit; border-radius: inherit'"
+        style="height: inherit; border-radius: 0 0.3rem 0.3rem 0"
       >
       </div>
     </div>

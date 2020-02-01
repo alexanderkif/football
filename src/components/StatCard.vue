@@ -1,5 +1,5 @@
 <template>
-  <q-card class="my-card" style="height: 7rem; width: 7rem">
+  <q-card class="my-card" style="height: 7rem; width: 7rem; cursor: pointer">
     <q-card-section class="q-pa-sm flex flex-center" :style="btn_left?'height: 5rem':'height: 100%'">
       <div class="row flex flex-center">
         <q-icon :name="icon" size="2rem"/>
