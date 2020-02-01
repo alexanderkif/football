@@ -73,7 +73,7 @@
             />
           </div>
         </div>
-        <div class="row bg-grey-3 q-py-sm justify-around">
+        <div class="row bg-grey-3 q-py-md justify-around">
           <stat-card
             class="bg-grey-3"
             v-for="(card, index) in cards"
@@ -86,7 +86,7 @@
             :icon_right="card.icon_right"
           />
         </div>
-        <div class="row bg-grey-3 justify-around q-py-md flex flex-center">
+        <div class="row bg-grey-3 justify-around q-pb-md flex flex-center">
           <div>
             <q-btn
               type="a"
@@ -94,6 +94,7 @@
               unelevated
               rounded
               color="warning"
+              text-color="dark"
               label="Новые игроки от другого тренера"
               class="text-uppercase"
             />
